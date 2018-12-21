@@ -1,6 +1,7 @@
 package com.myxh.coolshopping.ui.adapter;
 
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by asus on 2016/9/1.
  */
 public class ViewPageAdapter extends PagerAdapter {
-
+    private static final String TAG = "ViewPageAdapter";
     private List<View> mViews;
 
     public ViewPageAdapter(List<View> views) {
@@ -21,6 +22,7 @@ public class ViewPageAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View view = mViews.get(position);
         container.addView(view);
+        Log.e(TAG, "instantiateItem: position = " + position);
         return view;
     }
 
@@ -31,7 +33,7 @@ public class ViewPageAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view==object;
+        return view == object;
     }
 
     @Override

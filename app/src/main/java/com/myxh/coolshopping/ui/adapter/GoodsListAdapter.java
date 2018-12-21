@@ -3,6 +3,7 @@ package com.myxh.coolshopping.ui.adapter;
 import android.content.Context;
 import android.graphics.Paint;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class GoodsListAdapter extends BaseAdapter {
         return i;
     }
 
+    private static final String TAG = "GoodsListAdapter";
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         ViewHolder holder = null;
@@ -75,8 +77,8 @@ public class GoodsListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 //        holder.goodPhoto.setImageURI(Uri.parse(mGoodlist.get(i).getImages().get(0).getImage()));
-        holder.goodIcon.setVisibility(View.VISIBLE);
-        Glide.with(mContext).load(mGoodlist.get(i).getImages().get(0).getImage()).into(holder.goodIcon);
+        Log.e(TAG, "getView: " +mGoodlist.get(i).getImages().get(0).getImage());
+//        Glide.with(mContext).load(mGoodlist.get(i).getImages().get(0).getImage()).error(android.R.color.transparent).placeholder(android.R.color.transparent).into(holder.goodIcon);
         if (mGoodlist.get(i).getIs_appointment() == 1) {
             holder.goodAppointmentImg.setVisibility(View.VISIBLE);
         } else {
