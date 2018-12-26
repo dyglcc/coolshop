@@ -2,7 +2,9 @@
 
 buildscript {
     repositories {
-        jcenter()
+        google()
+        jcenter ()
+
         maven {
             url 'https://maven.google.com/'
             name 'Google'
@@ -18,7 +20,11 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        google()
+        jcenter ()
+//        jcenter {
+//            url "http://jcenter.bintray.com/"
+//        }
         //Bmob的maven仓库地址--必填
 
 //        maven {
@@ -28,7 +34,6 @@ allprojects {
             url "https://raw.github.com/bmob/bmob-android-sdk/master"
 
         }
-        google()
     }
 }
 

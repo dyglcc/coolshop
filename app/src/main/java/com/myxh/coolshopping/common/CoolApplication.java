@@ -91,9 +91,9 @@ public class CoolApplication extends ZApplication {
                 //设置Appkey(必要参数)
 //                .appKey("ADHOC_6cd6a401-05ca-4ae8-acb1-35254d2f3042")
 //                .enableDebugAssist(true)
-                .appKey("ADHOC_ba870cf3-cd5f-40ec-89cf-cec195a93a41")
+//                .appKey("ADHOC_ba870cf3-cd5f-40ec-89cf-cec195a93a41")
 //                .appKey("ADHOC_7207c39e-48df-4d4a-b142-4e4eddbb0ddb")
-//                .appKey("ADHOC_a75b344c-4c67-49ce-8fce-9a2739193b71")
+                .appKey("ADHOC_a75b344c-4c67-49ce-8fce-9a2739193b71")
 //                .addCustom("ip", "124.65.147.10")
 //                .reportImmediately()
                 .build();

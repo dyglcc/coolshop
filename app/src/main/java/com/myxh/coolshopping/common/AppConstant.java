@@ -27,7 +27,7 @@ public class AppConstant {
     /**
      * 数据请求基地址
      */
-    public static final String BASE_URL = "http://pi61i9ekd.bkt.clouddn.com/";
+    public static final String BASE_URL = "http://pk8fjoyh4.bkt.clouddn.com/";
 //    public static final String BASE_URL = "http://7xij5m.com1.z0.glb.clouddn.com/";
 
     /**
