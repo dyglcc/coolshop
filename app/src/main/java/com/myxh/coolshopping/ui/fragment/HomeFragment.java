@@ -52,7 +52,12 @@ import com.myxh.coolshopping.util.ToastUtil;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,17 +137,27 @@ public class HomeFragment extends BaseFragment {
             @Override
             protected Object doInBackground(Object[] objects) {
 
-                Response response = requestRecommend();
+//                Response response = requestRecommend();
+
                 Object[] objects1 = new Object[2];
                 try {
-                    if (response == null || response.body() == null) {
-                        return null;
-                    }
-                    objects1[0] = response.body().string();
+                    InputStream inputstream = HomeFragment.this.getContext().getAssets().open("spRecommend.txt");
+                    long st = System.currentTimeMillis();
+                    Log.i(TAG, "doInBackground: start read byte");
+                    int x = inputstream.available();
+                    byte[] bytes = new byte[x];
+                    inputstream.read(bytes);
+
+                    BufferedInputStream bis = new BufferedInputStream(inputstream);
+//                    if (response == null || response.body() == null) {
+//                        return null;
+//                    }t
+                    objects1[0] = new String(bytes, "utf8");
+                    Log.i(TAG, "doInBackground: end read byte " + (System.currentTimeMillis() - st));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                objects1[1] = response.isSuccessful();
+                objects1[1] = true;
 
                 return objects1;
             }
@@ -184,17 +199,20 @@ public class HomeFragment extends BaseFragment {
         @SuppressLint("StaticFieldLeak") AsyncTask taskhotfilm = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                Response response = hotfilm();
-                Object[] objects1 = new Object[2];
+                Object[] objects1 = null;
                 try {
-                    if (response == null || response.body() == null) {
-                        return null;
-                    }
-                    objects1[0] = response.body().string();
+                    InputStream inputStream = HomeFragment.this.getActivity().getAssets().open("filmHot_refresh.txt");
+                    int aviliable = inputStream.available();
+                    byte[] bytes = new byte[aviliable];
+                    inputStream.read(bytes);
+                    String strings = new String(bytes, "utf8");
+                    objects1 = new Object[2];
+
+                    objects1[0] = strings;
+                    objects1[1] = true;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                objects1[1] = response.isSuccessful();
 
                 return objects1;
             }

@@ -6,6 +6,10 @@ buildscript {
         jcenter ()
 
         maven {
+            url 'file:../adhoc_android/repo/'
+        }
+
+        maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
